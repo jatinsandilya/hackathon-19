@@ -43,8 +43,8 @@ class Server {
     }
 
     initExpressMiddleWare() {
-        app.use(favicon(__dirname + '/public/images/favicon.ico'));
-        app.use(express.static(__dirname + '/public'));
+        app.use(favicon(__dirname + '/public/favicon.ico'));
+        app.use(express.static(__dirname + '/dist'));
         app.use(morgan('dev'));
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
@@ -97,7 +97,7 @@ class Server {
 
         // redirect all others to the index (HTML5 history)
         app.all('/*', (req, res) => {
-            res.sendFile(__dirname + '/public/index.html');
+            res.sendFile(__dirname + '/dist/index.html');
         });
     }
 
