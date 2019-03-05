@@ -9,7 +9,7 @@ class Database {
 
     open(callback) {
         var options = {
-            useMongoClient: true,
+            useNewUrlParser:true,
             promiseLibrary: global.Promise
         };
         mongoose.connect(connectionString, options, (err) => {

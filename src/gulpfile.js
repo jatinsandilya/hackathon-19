@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     sequence = require('run-sequence'),
     jsPath = 'public/js',
     jsDist = 'public/js/dist',
-    cssPath = 'public/css',
+    cssPath = 'public/css/scss',
     cssDist = 'public/css/dist',
     libPath = 'public/lib',
     nodeModulesPath = 'node_modules';
@@ -26,7 +26,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('copy:libs', function (done) {
-    sequence('clean', 'copy:vendor', 'copy:rxjs', 'copy:angular', done);
+    sequence('clean', 'copy:vendor', 'copy:rxjs', 'copy:rxjs-compat','copy:angular', done);
 });
 
 gulp.task('copy:vendor', function() {
@@ -43,10 +43,19 @@ gulp.task('copy:vendor', function() {
 
 gulp.task('copy:rxjs', function() {
   return gulp.src([
-      nodeModulesPath + '/rxjs/**/*'
+      nodeModulesPath + '/rxjs/**/*',
+      nodeModulesPath + '/rxjs-compat/**/*',
     ])
     .pipe(gulp.dest(libPath + '/rxjs'));
 });
+
+gulp.task('copy:rxjs-compat', function() {
+    return gulp.src([
+        nodeModulesPath + '/rxjs-compat/**/*',
+      ])
+      .pipe(gulp.dest(libPath + '/rxjs-compat'));
+});
+
 
 gulp.task('copy:angular', function() {
     return gulp.src([nodeModulesPath + '/@angular/**/*']).pipe(gulp.dest(libPath + '/@angular'));

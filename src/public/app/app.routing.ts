@@ -1,19 +1,41 @@
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule, } from '@angular/common';
+import { BrowserModule  } from '@angular/platform-browser';
+import { Routes, RouterModule } from '@angular/router';
 
-import { CustomersComponent } from './customers/customers.component';
-import { CustomersGridComponent } from './customers/customers-grid.component';
-import { CustomerEditComponent } from './customers/customer-edit.component';
-import { CustomerEditReactiveComponent } from './customers/customer-edit-reactive.component';
-import { IRouting } from './shared/interfaces';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
-const routes: Routes = [
-  { path: 'customers', component: CustomersComponent},
-  { path: 'customers/:id', component: CustomerEditComponent},
-  //{ path: 'customers/:id', component: CustomerEditReactiveComponent },
-  { path: '**', pathMatch:'full', redirectTo: '/customers' } //catch any unfound routes and redirect to home page
+const routes: Routes =[
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  }, {
+    path: '',
+    component: AdminLayoutComponent,
+    children: [
+        {
+      path: '',
+      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+  }]}
+    // { path: 'dashboard',      component: DashboardComponent },
+    // { path: 'user-profile',   component: UserProfileComponent },
+    // { path: 'table-list',     component: TableListComponent },
+    // { path: 'typography',     component: TypographyComponent },
+    // { path: 'icons',          component: IconsComponent },
+    // { path: 'maps',           component: MapsComponent },
+    // { path: 'notifications',  component: NotificationsComponent },
+    // { path: 'upgrade',        component: UpgradeComponent },
+    // { path: '',               redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 
-export const appRouting: IRouting = { 
-    routes: RouterModule.forRoot(routes),
-    components: [ CustomersComponent, CustomerEditComponent, CustomerEditReactiveComponent, CustomersGridComponent ]
-};
+@NgModule({
+  imports: [
+    CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+  ],
+})
+export class AppRoutingModule { }
