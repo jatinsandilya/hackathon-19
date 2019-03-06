@@ -103,39 +103,34 @@ class FlightsRepository {
         });
     }
 
-    // updateCustomer(id, body, state, callback) {
-    //     console.log('*** FlightsRepository.editCustomer');
+    updateFlight(id, body, state, callback) {
+        console.log('*** FlightsRepository.editCustomer');
 
-    //     let stateObj = { 'id': state[0].id, 'abbreviation': state[0].abbreviation, 'name': state[0].name }
+        let stateObj = { 'id': state[0].id, 'abbreviation': state[0].abbreviation, 'name': state[0].name }
 
-    //     Customer.findById(id, (err, customer)  => {
-    //         if (err) { 
-    //             console.log(`*** FlightsRepository.editCustomer error: ${err}`); 
-    //             return callback(err); 
-    //         }
+        Flight.findById(id, (err, flight)  => {
+            if (err) { 
+                console.log(`*** FlightsRepository.editflight error: ${err}`); 
+                return callback(err); 
+            }
 
-    //         customer.firstName = body.firstName || customer.firstName;
-    //         customer.lastName = body.lastName || customer.lastName;
-    //         customer.email = body.email || customer.email;
-    //         customer.address = body.address || customer.address;
-    //         customer.city = body.city || customer.city;
-    //         customer.state = stateObj;
-    //         customer.stateId = stateObj.id;
-    //         customer.zip = body.zip || customer.zip;
-    //         customer.gender = body.gender || customer.gender;
+            flight.firstName = body.firstName || flight.firstName;
+            flight.lastName = body.lastName || flight.lastName;
+            flight.state = stateObj;
+            flight.stateId = stateObj.id;
 
 
-    //         customer.save((err, customer) => {
-    //             if (err) { 
-    //                 console.log(`*** FlightsRepository.updateCustomer error: ${err}`); 
-    //                 return callback(err, null); 
-    //             }
+            flight.save((err, flight) => {
+                if (err) { 
+                    console.log(`*** FlightsRepository.updateFlight error: ${err}`); 
+                    return callback(err, null); 
+                }
 
-    //             callback(null, customer);
-    //         });
+                callback(null, flight);
+            });
 
-    //     });
-    // }
+        });
+    }
 
     // delete a customer
     deleteFlight(id, callback) {

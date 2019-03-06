@@ -108,6 +108,33 @@ class FlightsController {
         });
     }
 
+    updateFlight(req, res) {
+        console.log('*** updateFlight');
+        console.log('*** req.body');
+        console.log(req.body);
+
+        if (!req.body || !req.body.stateId) {
+            throw new Error('Flight and associated stateId required');
+        }
+
+        statesRepo.getState(req.body.stateId, (err, state) => {
+            if (err) {
+                console.log('*** statesRepo.getState error: ' + util.inspect(err));
+                res.json({ status: false, error: 'State not found', flight: null });
+            } else {
+                flightsRepo.updateFlight(req.params.id, req.body, state, (err, flight) => {
+                    if (err) {
+                        console.log('*** updateFlight error: ' + util.inspect(err));
+                        res.json({ status: false, error: 'Update failed', flight: null });
+                    } else {
+                        console.log('*** updateFlight ok');
+                        res.json({ status: true, error: null, flight: flight });
+                    }
+                });
+            }
+        });
+    }
+
     deleteFlight(req, res) {
         console.log('*** deleteflight');
 
