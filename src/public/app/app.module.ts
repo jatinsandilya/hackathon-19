@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { CommonModule } from './common/common.module';
 
 import { AppComponent } from './app.component';
 
@@ -28,6 +29,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    CommonModule,
     ComponentsModule,
     RouterModule,
     AppRoutingModule,

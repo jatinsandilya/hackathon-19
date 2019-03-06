@@ -50,14 +50,14 @@ class Server {
         app.use(bodyParser.json());
         app.use(errorhandler());
         app.use(cookieParser());
-        app.use(csrf({ cookie: true }));
+        // app.use(csrf({ cookie: true }));
 
-        app.use((req, res, next) => {
-            let csrfToken = req.csrfToken();
-            res.locals._csrf = csrfToken;
-            res.cookie('XSRF-TOKEN', csrfToken);
-            next();
-        });
+        // app.use((req, res, next) => {
+        //     let csrfToken = req.csrfToken();
+        //     res.locals._csrf = csrfToken;
+        //     res.cookie('XSRF-TOKEN', csrfToken);
+        //     next();
+        // });
 
         process.on('uncaughtException', (err) => {
             if (err) console.log(err, err.stack);

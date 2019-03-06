@@ -109,15 +109,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _app_routing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.routing */ "./public/app/app.routing.ts");
 /* harmony import */ var _components_components_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/components.module */ "./public/app/components/components.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./public/app/app.component.ts");
-/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
-/* harmony import */ var _layouts_admin_layout_admin_layout_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./layouts/admin-layout/admin-layout.component */ "./public/app/layouts/admin-layout/admin-layout.component.ts");
+/* harmony import */ var _common_common_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./common/common.module */ "./public/app/common/common.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./public/app/app.component.ts");
+/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
+/* harmony import */ var _layouts_admin_layout_admin_layout_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./layouts/admin-layout/admin-layout.component */ "./public/app/layouts/admin-layout/admin-layout.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -137,19 +139,20 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_0__["BrowserAnimationsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_http__WEBPACK_IMPORTED_MODULE_3__["HttpModule"],
+                _common_common_module__WEBPACK_IMPORTED_MODULE_7__["CommonModule"],
                 _components_components_module__WEBPACK_IMPORTED_MODULE_6__["ComponentsModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"],
                 _app_routing__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
-                _agm_core__WEBPACK_IMPORTED_MODULE_8__["AgmCoreModule"].forRoot({
+                _agm_core__WEBPACK_IMPORTED_MODULE_9__["AgmCoreModule"].forRoot({
                     apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
                 })
             ],
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-                _layouts_admin_layout_admin_layout_component__WEBPACK_IMPORTED_MODULE_9__["AdminLayoutComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
+                _layouts_admin_layout_admin_layout_component__WEBPACK_IMPORTED_MODULE_10__["AdminLayoutComponent"],
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -224,6 +227,175 @@ var AppRoutingModule = /** @class */ (function () {
         })
     ], AppRoutingModule);
     return AppRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./public/app/common/common.module.ts":
+/*!********************************************!*\
+  !*** ./public/app/common/common.module.ts ***!
+  \********************************************/
+/*! exports provided: CommonModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommonModule", function() { return CommonModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./data.service */ "./public/app/common/data.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+//Using the new HttpClientModule now. If you're still on < Angular 4.3 see the 
+//core.module.ts.httpmodule file instead (simplify rename it to the name 
+//of this file to use it instead)
+
+
+var CommonModule = /** @class */ (function () {
+    function CommonModule() {
+    }
+    CommonModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            imports: [
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"]
+            ],
+            providers: [_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]]
+        })
+    ], CommonModule);
+    return CommonModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./public/app/common/data.service.ts":
+/*!*******************************************!*\
+  !*** ./public/app/common/data.service.ts ***!
+  \*******************************************/
+/*! exports provided: DataService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_Observable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/Observable */ "./node_modules/rxjs-compat/_esm5/Observable.js");
+/* harmony import */ var rxjs_add_observable_throw__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/observable/throw */ "./node_modules/rxjs-compat/_esm5/add/observable/throw.js");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
+/* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+//Using the new HttpClientModule now. If you're still on < Angular 4.3 see the 
+//data.service.ts file instead (simplify rename it to the name 
+//of this file to use it instead)
+
+
+
+
+
+var DataService = /** @class */ (function () {
+    function DataService(http) {
+        this.http = http;
+        this.baseUrl = '/api/customers';
+        this.baseStatesUrl = '/api/states';
+    }
+    DataService.prototype.getCustomers = function () {
+        var _this = this;
+        return this.http.get(this.baseUrl)
+            .map(function (customers) {
+            _this.calculateCustomersOrderTotal(customers);
+            return customers;
+        })
+            .catch(this.handleError);
+    };
+    DataService.prototype.getCustomersPage = function (page, pageSize) {
+        var _this = this;
+        return this.http.get(this.baseUrl + "/page/" + page + "/" + pageSize, { observe: 'response' })
+            .map(function (res) {
+            //Need to observe response in order to get to this header (see {observe: 'response'} above)
+            var totalRecords = +res.headers.get('x-inlinecount');
+            var customers = res.body;
+            _this.calculateCustomersOrderTotal(customers);
+            return {
+                results: customers,
+                totalRecords: totalRecords
+            };
+        })
+            .catch(this.handleError);
+    };
+    DataService.prototype.getCustomer = function (id) {
+        return this.http.get(this.baseUrl + '/' + id)
+            .catch(this.handleError);
+    };
+    DataService.prototype.insertCustomer = function (customer) {
+        return this.http.post(this.baseUrl, customer)
+            .map(function (data) {
+            console.log('insertCustomer status: ' + data.status);
+            return data.customer;
+        })
+            .catch(this.handleError);
+    };
+    DataService.prototype.updateCustomer = function (customer) {
+        return this.http.put(this.baseUrl + '/' + customer._id, customer)
+            .map(function (data) {
+            console.log('updateCustomer status: ' + data.status);
+            return data.customer;
+        })
+            .catch(this.handleError);
+    };
+    DataService.prototype.deleteCustomer = function (id) {
+        return this.http.delete(this.baseUrl + '/' + id)
+            .catch(this.handleError);
+    };
+    DataService.prototype.getStates = function () {
+        return this.http.get(this.baseStatesUrl)
+            .catch(this.handleError);
+    };
+    DataService.prototype.calculateCustomersOrderTotal = function (customers) {
+        for (var _i = 0, customers_1 = customers; _i < customers_1.length; _i++) {
+            var customer = customers_1[_i];
+            if (customer && customer.orders) {
+                var total = 0;
+                for (var _a = 0, _b = customer.orders; _a < _b.length; _a++) {
+                    var order = _b[_a];
+                    total += (order.price * order.quantity);
+                }
+                customer.orderTotal = total;
+            }
+        }
+    };
+    DataService.prototype.handleError = function (error) {
+        console.error('server error:', error);
+        if (error.error instanceof Error) {
+            var errMessage = error.error.message;
+            return rxjs_Observable__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(errMessage);
+            // Use the following instead if using lite-server
+            //return Observable.throw(err.text() || 'backend server error');
+        }
+        return rxjs_Observable__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error || 'Node.js server error');
+    };
+    DataService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], DataService);
+    return DataService;
 }());
 
 
