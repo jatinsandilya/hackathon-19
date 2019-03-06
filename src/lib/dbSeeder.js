@@ -2,6 +2,7 @@
 const   mongoose = require('mongoose'),
         Customer = require('../models/customer'),
         State = require('../models/state'),
+        Flight = require('../models/flight'),
         dbConfig = require('./configLoader').databaseConfig,
         connectionString = `mongodb://${dbConfig.host}/${dbConfig.database}`,
         connection = null;
@@ -252,6 +253,32 @@ class DBSeeder {
             var state = new State ({ 'id': i + 1, 'name': states[i].name, 'abbreviation': states[i].abbreviation });
             state.save();
         }
+        console.log("Flight seed start");
+        var flights = [
+            { "name": "Alabama", "abbreviation": "AL" },
+            { "name": "Montana", "abbreviation": "MT" },
+            { "name": "Alaska", "abbreviation": "AK" },
+            { "name": "Virginia", "abbreviation": "VA" },
+            { "name": "Michigan", "abbreviation": "MI" },
+            { "name": "Washington", "abbreviation": "WA" },
+            { "name": "Minnesota", "abbreviation": "MN" },
+            { "name": "West Virginia", "abbreviation": "WV" },
+            { "name": "Mississippi", "abbreviation": "MS" },
+            { "name": "Wisconsin", "abbreviation": "WI" },
+            { "name": "Missouri", "abbreviation": "MO" },
+            { "name": "Wyoming", "abbreviation": "WY" }
+            ];
+    
+            var l = flights.length,i;
+            console.log("Flight array size "+l);
+            Flight.remove({});
+    
+            for (i = 0; i < l; i++) {
+                console.log("Id "+ i);
+                var flight = new Flight ({ 'id': i , 'name': flights[i].name, 'abbreviation': flights[i].abbreviation });
+                flight.save();
+            }
+            console.log("Flight seed end");
     }
 }
 
