@@ -63,20 +63,14 @@ class FlightsController {
 
     insertFlight(req, res) {
         console.log('*** insertFlight');
-        statesRepo.getState(req.body.stateId, (err, state) => {
+
+        flightsRepo.insertFlight(req.body, (err, flight) => {
             if (err) {
-                console.log('*** statesRepo.getState error: ' + util.inspect(err));
-                res.json({ status: false, error: 'State not found', flight: null });
+                console.log('*** FlightsRepo.insertFlight error: ' + util.inspect(err));
+                res.json({status: false, error: 'Insert failed', flight: null});
             } else {
-                flightsRepo.insertFlight(req.body, state, (err, flight) => {
-                    if (err) {
-                        console.log('*** FlightsRepo.insertFlight error: ' + util.inspect(err));
-                        res.json({status: false, error: 'Insert failed', flight: null});
-                    } else {
-                        console.log('*** insertFlight ok');
-                        res.json({ status: true, error: null, flight: flight });
-                    }
-                });
+                console.log('*** insertFlight ok');
+                res.json({ status: true, error: null, flight: flight });
             }
         });
     }

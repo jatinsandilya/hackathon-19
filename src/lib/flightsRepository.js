@@ -83,23 +83,24 @@ class FlightsRepository {
     }
 
     // insert a  customer
-    insertFlight(body, state, callback) {
+    insertFlight(body, callback) {
         console.log('*** FlightsRepository.insertFlight');
-        console.log(state);
+
         let flight = new Flight();
-        let newState = { 'id': state[0].id, 'firstName': state[0].firstName, 'lastName': state[0].lastName }
+        // let newState = { 'id': state[0].id, 'firstName': state[0].firstName, 'lastName': state[0].lastName }
         console.log(body);
 
-        flight.firstName = body.firstName;
-        flight.lastName = body.lastName;
+        flight.name = body.name;
+        flight.id = body.id;
+        flight.abbreviation = body.abbreviation;
 
-        flight.save((err, customer) => {
+        flight.save((err, flight) => {
             if (err) { 
                 console.log(`*** FlightsRepository insertFlight error: ${err}`); 
                 return callback(err, null); 
             }
 
-            callback(null, customer);
+            callback(null, flight);
         });
     }
 
