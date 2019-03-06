@@ -9,7 +9,8 @@
         "tsc": "tsc",
         "tsc:w": "tsc -w",
         "server": "node server.js",
-        "start": "concurrently \"npm run tsc:w\" \"nodemon server.js\""
+        "start": "concurrently \"npm run tsc:w\" \"nodemon server.js\"",
+        "dev" : "concurrently \"ng serve --proxy-config server.conf.json\" \"nodemon server.js\""
     },
     "dependencies": {
         "@agm/core": "1.0.0-beta.5",
