@@ -4,8 +4,8 @@
   "newProjectRoot": "projects",
   "projects": {
     "material-dashboard-angular": {
-      "root": "",
-      "sourceRoot": "src",
+      "root": "public",
+      "sourceRoot": "public",
       "projectType": "application",
       "architect": {
         "build": {
@@ -17,8 +17,8 @@
             "tsConfig": "public/tsconfig.app.json",
             "polyfills": "public/polyfills.ts",
             "assets": [
-              "src/assets",
-              "src/favicon.ico"
+              "public/assets/img",
+              "public/favicon.ico"
             ],
             "styles": [
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
