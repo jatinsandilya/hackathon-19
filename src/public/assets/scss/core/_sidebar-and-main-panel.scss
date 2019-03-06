@@ -327,6 +327,10 @@
         @include sidebar-active-color($black-color);
     }
 
+    &[data-color="indigo"]{
+        @include set-background-color-button($brand-indigo);
+    }
+
     &[data-background-color="red"]{
         @include sidebar-background-color($brand-danger, $white-color);
 
